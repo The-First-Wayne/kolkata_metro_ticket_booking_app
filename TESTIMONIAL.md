@@ -11,7 +11,6 @@ This project is a Kolkata Metro ticket-booking application. The React frontend a
 ## Bugs I Encountered and Resolved
 
 - The `.env.example` database URL was missing the colon between `localhost` and port `5432`. I corrected the connection string so PostgreSQL could use the configured host and port correctly.
-- The backend was initially started from the wrong directory. I started it from the `backend` folder.
 - SQLAlchemy was missing from the environment, so I installed the dependency.
 - The frontend imported `lucide-react`, but the package was missing from the project dependencies. I installed it so the Vite application could build correctly.
 - The SQLite database path used the wrong `metadata_graph.db` filename and treated the `sqlite_client.py` file as a directory. I used `.parent` to reference the folder containing the Python file, allowing the application to locate the database correctly.
