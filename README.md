@@ -4,49 +4,12 @@ A high-performance transit routing, booking, and system verification platform. I
 
 ## Features
 
-1. **Dual-Database Gatekeeper**: Checks credentials across PostgreSQL and SQLite database layers, verifies the background worker heartbeat, and performs AES-256 decryption of the system clearance code.
-2. **Dijkstra Metro Routing**: Computes shortest-path itineraries across multi-line metro networks (Green and Blue lines), accounting for travel time, fares, and line transfers at interchange nodes (Esplanade).
-3. **Automated Ticket Lifecycle**: A background cron worker automatically sweeps database bookings to mark expired tickets based on timestamps.
-4. **Transit Ticket Dashboard**: Complete ticket dashboard showing active/expired statistics, listing bookings, and rendering css-based mock QR codes.
+1. Smart Route Planner: Finds the fastest and cheapest way to travel across the metro network, including where you need to switch lines.
 
----
+2. Auto-Expiring Tickets: Works in the background to automatically update and clear out your tickets once their time is up.
 
-## Directory Structure
+3. Ticket Dashboard: A clean screen where you can view all your active and past tickets, complete with digital QR codes.
 
-```text
-kolkata-metro-assessment/
-├── backend/
-│   ├── app/
-│   │   ├── main.py (FastAPI application entry point)
-│   │   ├── core/
-│   │   │   ├── config.py (Pydantic BaseSettings config loader)
-│   │   │   └── security.py (AES key derivation & decryption)
-│   │   ├── api/
-│   │   │   └── routes.py (FastAPI route controllers)
-│   │   ├── services/
-│   │   │   ├── graph_engine.py (Dijkstra routing logic)
-│   │   │   └── unlock_service.py (Gatekeeper system validation)
-│   │   ├── db/
-│   │   │   ├── postgres_client.py (PostgreSQL clients & schemas)
-│   │   │   ├── sqlite_client.py (SQLite client connection)
-│   │   │   └── init_sqlite.py (SQLite database graph initializer)
-│   │   └── worker/
-│   │       └── cron_scheduler.py (Heartbeat and ticket cleaner worker)
-│   ├── requirements.txt
-│   └── .env (Local defaults)
-├── frontend/
-│   ├── src/
-│   │   ├── App.jsx (Main container)
-│   │   ├── components/ (Dashboard, RouteSelector, SystemStatus)
-│   │   ├── services/api.js (Axios API connection)
-│   │   └── index.css (Tailwind rules)
-│   ├── package.json
-│   └── vite.config.js
-├── database_setup/
-│   └── postgres_init.sql (Postgres schemas & Key A seed)
-├── TASK.md (Candidate requirements)
-└── README.md (This setup document)
-```
 
 ---
 
